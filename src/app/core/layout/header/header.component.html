@@ -1,7 +1,11 @@
 <header class="header">
-  <ul ngbNav [activeId]="route.fragment | async" class="nav-tabs">
-    <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
-      <a routerLink="/users">{{ link.title }}</a>
+  <a class="logo" href="https://github.com" target="_blank">
+    <img src="assets/icons/github-header.ico" alt="GitHub Icon" />
+    <span>github_users</span>
+  </a>
+  <nav class="navigation" *ngFor="let link of links">
+    <li [ngbNavItem]="link.fragment" >
+      <button routerLink="link.path">{{ link.title }}</button>
     </li>
-  </ul>
+  </nav>
 </header>
