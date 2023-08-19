@@ -1,1 +1,7 @@
-<p>header works!</p>
+<header class="header">
+  <ul ngbNav [activeId]="route.fragment | async" class="nav-tabs">
+    <li [ngbNavItem]="link.fragment" *ngFor="let link of links">
+      <a routerLink="/users">{{ link.title }}</a>
+    </li>
+  </ul>
+</header>

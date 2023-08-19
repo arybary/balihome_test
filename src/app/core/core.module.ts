@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.development';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    NgbModule,
     RouterModule,
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(appRedusers, { metaReducers }),
