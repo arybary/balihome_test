@@ -7,6 +7,9 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { UsersSearchComponent } from './components/users-search/users-search.component';
 import { LetModule, PushPipe } from '@ngrx/component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,10 @@ import { LetModule, PushPipe } from '@ngrx/component';
   ],
   imports: [
     CommonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgbModule,
     LetModule,
     PushPipe,

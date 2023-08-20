@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../model/user.model';
+
 import { UsersFacade } from '../state/users.facade';
 
 @Component({
@@ -11,6 +11,7 @@ import { UsersFacade } from '../state/users.facade';
 })
 export class UsersComponent implements OnInit {
   loaded$: Observable<boolean> = this.usersFacada.loaded$;
+ 
 
   constructor(private readonly usersFacada: UsersFacade) {}
   ngOnInit(): void {

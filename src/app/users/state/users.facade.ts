@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../model/user.model';
-import * as usersActions from './actions/users.actions';
+import * as UsersActions from './actions/users.actions';
 import { UsersState } from './redusers/users.redusers';
 import { usersFeature } from './selectors/users.selectors';
 
@@ -27,10 +27,14 @@ export class UsersFacade {
   constructor(private readonly store: Store<UsersState>) {}
 
   public loadUsers(): void {
-    this.store.dispatch(usersActions.loadUsers());
+    this.store.dispatch(UsersActions.loadUsers());
   }
 
-  public selectUser(userId: number): void {
-    this.store.dispatch(usersActions.selectUser({ userId }));
+  public serchUsers(search: string): void {
+    this.store.dispatch(UsersActions.searchUsers({ query: search }));
+  }
+
+  public selectUser(id: number): void {
+    this.store.dispatch(UsersActions.selectUser({ userId: id }));
   }
 }

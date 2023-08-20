@@ -3,9 +3,5 @@
     <img src="assets/icons/github-header.ico" alt="GitHub Icon" />
     <span>github_users</span>
   </a>
-  <nav class="navigation" *ngFor="let link of links">
-    <li [ngbNavItem]="link.fragment" >
-      <button routerLink="link.path">{{ link.title }}</button>
-    </li>
-  </nav>
+  <a [routerLink]="[NavigationPath.UsersPage]"> HOME </a>
 </header>

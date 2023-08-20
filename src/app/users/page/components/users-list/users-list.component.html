@@ -1,12 +1,14 @@
 <ng-container *ngIf="error$ | ngrxPush as error; else userslist">
- <h2 class="error">{{ error }}</h2>
+  <h2 class="error">{{ error }}</h2>
 </ng-container>
 <ng-template #userslist>
   <div *ngrxLet="users$ as users" class="row">
-    <div class="col-md-6" *ngFor="let user of users">
-      <div>guy</div>
-      <div>guy</div>
-      <user-card [avatarUrl]="user.avatar_url" [login]="user.login" />
-    </div>
+    <ul class="col-md-6" *ngFor="let user of users">
+      <user-card
+        [avatarUrl]="user.avatar_url"
+        [login]="user.login"
+        [id]="user.id"
+      />
+    </ul>
   </div>
 </ng-template>

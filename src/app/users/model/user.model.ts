@@ -1,8 +1,14 @@
-export interface User {
-  id: number;
+export interface GitHubUserSearchResponse {
+  total_count: number;
+  incomplete_results: boolean;
+  items: GitHubUser[];
+}
+
+export interface GitHubUser {
   login: string;
-  avatar_url: string;
+  id: number;
   node_id: string;
+  avatar_url: string;
   gravatar_id: string;
   url: string;
   html_url: string;
@@ -17,4 +23,11 @@ export interface User {
   received_events_url: string;
   type: string;
   site_admin: boolean;
+  score?: number;
+}
+
+export interface User {
+  id: number;
+  login: string;
+  avatar_url: string;
 }

@@ -1,6 +1,5 @@
 <ng-container *ngIf="loaded$ | ngrxPush; else loading">
-  <users-search />
-  <users-list />
+  <repos-list />
 </ng-container>
 <ng-template #loading>
   <div class="spinner-border text-info" role="status">

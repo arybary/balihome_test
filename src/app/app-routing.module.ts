@@ -8,7 +8,6 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', redirectTo: 'users', pathMatch: 'full' },
       {
         path: NavigationPath.UsersPage,
         loadChildren: () =>
@@ -17,7 +16,7 @@ const routes: Routes = [
       {
         path: NavigationPath.RepoPage,
         loadChildren: () =>
-          import('./repo/page/repo.module').then((m) => m.RepoModule),
+          import('./repos/page/repos.module').then((m) => m.ReposModule),
       },
     ],
   },
@@ -27,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -9,10 +9,8 @@ import { NavigationPath } from '../../constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  links = [
-    { title: 'USERS', fragment: 'users',path: NavigationPath.UsersPage},
-    { title: 'Two', fragment: 'two',path: NavigationPath.UsersPage },
-  ];
+  NavigationPath = NavigationPath;
+  links = [{ title: 'HOME', path: NavigationPath.UsersPage }, ,];
 
   constructor(public route: ActivatedRoute) {}
 }

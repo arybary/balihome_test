@@ -10,6 +10,7 @@ import { UsersFacade } from 'src/app/users/state/users.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
+  search?: string;
   users$: Observable<User[]> = this.usersFacada.users$;
   error$: Observable<any> = this.usersFacada.error$;
 

@@ -1,22 +1,34 @@
-// users.effects.ts
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { GithubUsersApiService } from '../../service/github-users-api.service';
-import * as usersActions from '../actions/users.actions';
+import { GithubUsersApiService } from '../../../core/service/github-users-api.service';
+import * as UsersActions from '../actions/users.actions';
 
 @Injectable()
 export class UsersEffects {
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(usersActions.loadUsers),
+      ofType(UsersActions.loadUsers),
       mergeMap(() =>
         this.githubService.getUsers().pipe(
-          map((users) => usersActions.loadUsersSuccess({ users })),
-          catchError((error) => of(usersActions.loadUsersFailure({ error })))
+          map((users) => UsersActions.loadUsersSuccess({ users })),
+          catchError((error) => of(UsersActions.loadUsersFailure({ error })))
         )
       )
+    )
+  );
+
+  searchUsers$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UsersActions.searchUsers),
+      mergeMap((action) => {
+        const { query } = action;
+        return this.githubService.searchUsers(query).pipe(
+          map((users) => UsersActions.loadUsersSuccess({ users })),
+          catchError((error) => of(UsersActions.loadUsersFailure({ error })))
+        );
+      })
     )
   );
 
