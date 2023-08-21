@@ -1,7 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { Repos } from '../../model/repos.model';
 
-export const loadRepos = createAction('[Repos/API] Load Repos');
+export const loadRepos = createAction(
+  '[Repos/API] Load Repos',
+  props<{ login: string }>()
+);
 
 export const loadReposSuccess = createAction(
   '[Repos/API] Load Repos Success',

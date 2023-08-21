@@ -11,6 +11,9 @@ export class UsersFacade {
   public readonly users$: Observable<User[]> = this.store.pipe(
     select(usersFeature.selectAll)
   );
+  public readonly usersTotal$: Observable<number> = this.store.pipe(
+    select(usersFeature.selectTotal)
+  );
 
   public readonly selectedId$: Observable<number | null> = this.store.pipe(
     select(usersFeature.selectSelectedUserId)

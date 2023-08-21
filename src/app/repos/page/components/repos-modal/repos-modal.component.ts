@@ -9,7 +9,7 @@ import { Repos } from 'src/app/repos/model/repos.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReposModalComponent {
-  @Input() repositorie: Repos | undefined;
+  @Input() repo: Repos | undefined;
 
 
   modalRef?: BsModalRef;

@@ -1,7 +1,8 @@
 .header {
   display: flex;
+  justify-content: space-between;
+  text-align: center;
   align-items: center;
-  justify-content: center;
   height: 60px;
   background-color: darkslategray;
 }
@@ -10,20 +11,48 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 3px;
   text-decoration: none;
-  font-family: "Monoton";
-  font-size: 24px;
+  font-family: Barriecito;
+  font-size: 22px;
   border-radius: 20px;
-  border: 0.2rem solid #000;
+  border: 0.2rem solid darkslategray;
   color: #000;
   background-color: #fff;
 }
 
-.navigations {
+.logo-img {
+  height: 48px;
+  width: 48px;
+}
+
+nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-color: #f1f1f1;
+  font-family: "Monoton";
+  border-radius: 20px;
+  padding: 10px;
+
+  a {
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 22px;
+    color: #333;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #77e375;
+    }
+
+    &.active {
+      background-color: darkslategray;
+      color: white;
+    }
+  }
+}
+
+nav a.active {
+  background-color: darkslategray;
   color: #fff;
-  font-size: 20px;
 }

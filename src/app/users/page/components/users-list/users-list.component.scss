@@ -1,7 +1,29 @@
-.error {
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  border: thick double darkslategray;
+  cursor: pointer;
+}
+.card-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  color:red;
-  font-size: larger;
+  font-family: Monoton;
+  font-weight: 300;
+  font-size: 42px;
+  background-color: #0006;
+}
+.avatar {
+  border-radius: 25%;
+  width: 30%;
+}
+
+.striped-list mat-grid-tile:nth-child(even) {
+  background-color: #f2f2f2; /* Чередующийся цвет для четных элементов */
+}
+
+.striped-list mat-grid-tile:nth-child(odd) {
+  background-color: #fff7; /* Чередующийся цвет для нечетных элементов */
 }

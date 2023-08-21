@@ -1,7 +1,17 @@
 <header class="header">
-  <a class="logo" href="https://github.com" target="_blank">
-    <img src="assets/icons/github-header.ico" alt="GitHub Icon" />
-    <span>github_users</span>
-  </a>
-  <a [routerLink]="[NavigationPath.UsersPage]"> HOME </a>
+  <div>
+    <a class="logo" href="https://github.com" target="_blank">
+      <img
+        class="logo-img"
+        src="assets/icons/github-header.ico"
+        alt="GitHub Icon"
+      />
+      <span>github</span>
+    </a>
+  </div>
+  <nav>
+    <a [routerLink]="[NavigationPath.UsersPage]" routerLinkActive="active">
+      Users_list
+    </a>
+  </nav>
 </header>

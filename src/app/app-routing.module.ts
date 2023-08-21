@@ -20,6 +20,13 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '**',
+    loadChildren: (): Promise<any> =>
+      import('./not-found/page/not-found.module').then(
+        (modules) => modules.NotFoundModule
+      ),
+  },
 ];
 
 @NgModule({

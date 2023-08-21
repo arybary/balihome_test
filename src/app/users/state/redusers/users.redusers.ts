@@ -1,5 +1,5 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Action, createFeature, createReducer, createSelector, on } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 import * as UserActions from '../actions/users.actions';
 import { User } from '../../model/user.model';
 
@@ -41,12 +41,10 @@ export const usersReducer = createReducer(
     (state, { error }): UsersState => ({
       ...state,
       loaded: true,
-      error:error.message,
+      error: error.message,
     })
   )
 );
 
 export const reducer = (state: UsersState | undefined, action: Action) =>
   usersReducer(state, action);
-
-

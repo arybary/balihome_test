@@ -9,20 +9,15 @@ import { environment } from 'src/environments/environment.development';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { RouterModule } from '@angular/router';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CustomSerializer } from './store/custom-route-serializer';
 
 @NgModule({
-  declarations: [
-    LayoutComponent,
-    HeaderComponent
-  ],
+  declarations: [LayoutComponent, HeaderComponent],
   imports: [
     CommonModule,
-    NgbModule,
     RouterModule,
-    StoreRouterConnectingModule.forRoot({serializer: CustomSerializer}),
     StoreModule.forRoot(appRedusers, { metaReducers }),
+    StoreRouterConnectingModule.forRoot({ serializer: CustomSerializer }),
     EffectsModule.forRoot(),
     !environment.production
       ? StoreDevtoolsModule.instrument({

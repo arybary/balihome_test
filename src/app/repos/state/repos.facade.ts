@@ -22,8 +22,8 @@ export class ReposFacade {
 
   constructor(private readonly store: Store<ReposState>) {}
 
-  public loadRepos(): void {
-    this.store.dispatch(ReposActions.loadRepos());
+  public loadRepos(login:string): void {
+    this.store.dispatch(ReposActions.loadRepos({login:login}));
   }
 
 

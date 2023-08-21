@@ -11,12 +11,6 @@ import { ReposFacade } from 'src/app/repos/state/repos.facade';
 })
 export class ReposListComponent {
   repos$: Observable<Repos[]> = this.reposFacada.repos$;
-  error$: Observable<any> = this.reposFacada.error$;
 
-  constructor(
-    private readonly reposFacada: ReposFacade,
-
-  ) {}
-
-
+  constructor(private readonly reposFacada: ReposFacade) {}
 }

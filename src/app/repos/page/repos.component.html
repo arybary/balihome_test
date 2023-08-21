@@ -1,8 +1,14 @@
 <ng-container *ngIf="loaded$ | ngrxPush; else loading">
+  <ng-container *ngIf="error$ | ngrxPush as error; else userslist">
+    <h2 class="error">{{ error }}</h2>
+  </ng-container>
+
+  <ng-template #userslist>
+  <h2>{{loginUser}}</h2>
   <repos-list />
+  </ng-template>
 </ng-container>
+
 <ng-template #loading>
-  <div class="spinner-border text-info" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
+  <mat-spinner></mat-spinner>
 </ng-template>

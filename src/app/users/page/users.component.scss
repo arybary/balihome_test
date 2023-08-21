@@ -1,0 +1,12 @@
+.users {
+  display: flex;
+  flex-direction: row;
+}
+.total {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: Bricolage;
+  font-size: 30px;
+}

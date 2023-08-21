@@ -9,7 +9,7 @@ import * as UsersActions from '../actions/users.actions';
 export class UsersEffects {
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UsersActions.loadUsers,UsersActions.searchUsers),
+      ofType(UsersActions.loadUsers, UsersActions.searchUsers),
       mergeMap(() =>
         this.githubService.getUsers().pipe(
           map((users) => UsersActions.loadUsersSuccess({ users })),

@@ -1,13 +1,5 @@
-<ng-container *ngIf="error$ | ngrxPush as error; else userslist">
-  <h2 class="error">{{ error }}</h2>
-</ng-container>
-<ng-template #userslist>
-  <div *ngrxLet="repos$ as repos" class="row">
-    <ul class="" *ngFor="let repo of repos">
-      <repos-modal
-        [repositorie]="repo"
-    
-      />
-    </ul>
+<div  class="repos-list"  *ngrxLet="repos$ as repos">
+  <div   *ngFor="let repo of repos">
+    <repos-modal [repo]="repo" />
   </div>
-</ng-template>
+</div>

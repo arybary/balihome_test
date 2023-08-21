@@ -10,7 +10,6 @@ import { NavigationPath } from '../../constants';
 })
 export class HeaderComponent {
   NavigationPath = NavigationPath;
-  links = [{ title: 'HOME', path: NavigationPath.UsersPage }, ,];
 
   constructor(public route: ActivatedRoute) {}
 }

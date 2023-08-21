@@ -16,7 +16,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GithubUsersApiService {
   private apiUrl = apiUrlGithub;
-  private login = this.route.snapshot.paramMap.get('login')!;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -38,9 +37,7 @@ export class GithubUsersApiService {
 
   searchUsers(query: string): Observable<User[]> {
     return this.http
-      .get<GitHubUserSearchResponse>(`${this.apiUrl}/search/users`, {
-        params: { q: query },
-      })
+      .get<GitHubUserSearchResponse>(`${this.apiUrl}/search/users?q=${query}`)
       .pipe(
         map(({ items }) =>
           items.map(({ id, login, avatar_url }) => ({
@@ -55,27 +52,24 @@ export class GithubUsersApiService {
         })
       );
   }
-  getUserRepos(): Observable<Repos[]> {
-    console.log(this.login);
-    return this.http
-      .get<Repos[]>(`${this.apiUrl}/users/${this.login}/repos`)
-      .pipe(
-        map((repos) =>
-          repos.map(
-            ({ id, name, description, language, has_issues, html_url }) => ({
-              id,
-              name,
-              description,
-              language,
-              has_issues,
-              html_url,
-            })
-          )
-        ),
-        catchError((error) => {
-          console.error('Error searching users', error);
-          return throwError(error);
-        })
-      );
+  getUserRepos(login: string): Observable<Repos[]> {
+    return this.http.get<Repos[]>(`${this.apiUrl}/users/${login}/repos`).pipe(
+      map((repos) =>
+        repos.map(
+          ({ id, name, description, language, has_issues, html_url }) => ({
+            id,
+            name,
+            description,
+            language,
+            has_issues,
+            html_url,
+          })
+        )
+      ),
+      catchError((error) => {
+        console.error('Error searching users', error);
+        return throwError(error);
+      })
+    );
   }
 }

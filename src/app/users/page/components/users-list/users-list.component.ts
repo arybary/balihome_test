@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NavigationPath } from 'src/app/core/constants';
 import { User } from 'src/app/users/model/user.model';
 import { UsersFacade } from 'src/app/users/state/users.facade';
 
@@ -10,9 +11,9 @@ import { UsersFacade } from 'src/app/users/state/users.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersListComponent {
-  search?: string;
+  NavigationPath = NavigationPath;
+
   users$: Observable<User[]> = this.usersFacada.users$;
-  error$: Observable<any> = this.usersFacada.error$;
 
   constructor(private readonly usersFacada: UsersFacade) {}
 }

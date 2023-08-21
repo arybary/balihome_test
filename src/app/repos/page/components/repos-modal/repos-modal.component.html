@@ -1,10 +1,12 @@
-<button type="button" class="btn btn-primary" (click)="openModal(template)">
-  {{ 'repositorie.name' }}
-</button>
+<ng-container *ngIf="repo">
+  <button type="button" class="btn btn-primary" (click)="openModal(template)">
+    {{ repo.name }}
+  </button>
+</ng-container>
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">{{ 'repositorie.name' }}</h4>
+    <h4 class="modal-title pull-left">{{ "repo.name" }}</h4>
     <button
       type="button"
       class="close btn-close pull-right"
@@ -14,5 +16,5 @@
       <span aria-hidden="true" class="visually-hidden">&times;</span>
     </button>
   </div>
-  <div class="modal-body">{{ 'repositorie.language' }}</div>
+  <div class="modal-body">{{ "repo.language" }}</div>
 </ng-template>

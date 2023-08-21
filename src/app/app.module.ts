@@ -1,13 +1,11 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreModule } from './core/core.module';
-import { UsersStateModule } from './users/state/users-state.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReposStateModule } from './repos/state/repos-state.module';
+import { AppCommonModule } from './app-common.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,9 +14,7 @@ import { ReposStateModule } from './repos/state/repos-state.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgbModule,
-    UsersStateModule,
-    ReposStateModule,
+    AppCommonModule,
     CoreModule,
   ],
 

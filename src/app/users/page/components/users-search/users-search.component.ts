@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/users/model/user.model';
 import { UsersFacade } from 'src/app/users/state/users.facade';
@@ -10,11 +16,15 @@ import { UsersFacade } from 'src/app/users/state/users.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersSearchComponent {
-  search?: string ;
-  suggestions$?: Observable<User[]>=this.usersFacada.users$;
+  @Input() userName: string = '';
+  @Output() userNameChange = new EventEmitter<string>();
+
   constructor(private readonly usersFacada: UsersFacade) {}
 
-  onKey(event: KeyboardEvent) { // with type info
-    this.usersFacada.serchUsers((event.target as HTMLInputElement).value);
+  onNameChange(model: string) {
+    this.userName = model;
+    this.userNameChange.emit(model);
+    if( this.userName !==''){this.usersFacada.serchUsers(this.userName)}
+    this.usersFacada.loadUsers()
   }
 }

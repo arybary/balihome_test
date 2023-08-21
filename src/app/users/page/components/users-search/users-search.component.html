@@ -1,7 +1,1 @@
-<input [(ngModel)]="search"
-       typeaheadOptionField="login"
-       [typeahead]="suggestions$"
-       [typeaheadAsync]="true"
-       class="form-control"
-       placeholder="Enter GitHub username"
-       (keyup)="onKey($event)">
+<input class="search" [ngModel]="userName" (ngModelChange)="onNameChange($event)" />

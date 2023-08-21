@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LetModule, PushPipe } from '@ngrx/component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReposModalComponent } from './components/repos-modal/repos-modal.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [ReposComponent, ReposListComponent, ReposModalComponent],
@@ -14,6 +15,7 @@ import { ReposModalComponent } from './components/repos-modal/repos-modal.compon
     CommonModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     FormsModule,
     LetModule,
     PushPipe,

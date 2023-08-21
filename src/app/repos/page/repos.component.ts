@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from 'src/app/core/store';
+import { selectRouteParams } from 'src/app/core/store/router.selectors';
+
 import { ReposFacade } from '../state/repos.facade';
 
 @Component({
@@ -11,9 +15,17 @@ import { ReposFacade } from '../state/repos.facade';
 })
 export class ReposComponent {
   loaded$: Observable<boolean> = this.reposFacada.loaded$;
+  error$: Observable<any> = this.reposFacada.error$;
+  loginUser: string = '';
 
-  constructor(private readonly reposFacada: ReposFacade) {}
+  constructor(
+    private readonly reposFacada: ReposFacade,
+    private store: Store<AppState>
+  ) {}
   ngOnInit(): void {
-    this.reposFacada.loadRepos();
+    this.store.pipe(select(selectRouteParams)).subscribe(({ login }) => {
+      this.loginUser = login;
+      this.reposFacada.loadRepos(login);
+    });
   }
 }
