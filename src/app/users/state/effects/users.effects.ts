@@ -22,13 +22,12 @@ export class UsersEffects {
   searchUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersActions.searchUsers),
-      mergeMap((action) => {
-        const { query } = action;
-        return this.githubService.searchUsers(query).pipe(
+      mergeMap(({ query }) =>
+        this.githubService.searchUsers(query).pipe(
           map((users) => UsersActions.loadUsersSuccess({ users })),
           catchError((error) => of(UsersActions.loadUsersFailure({ error })))
-        );
-      })
+        )
+      )
     )
   );
 

@@ -9,6 +9,7 @@ export interface UsersState extends EntityState<User> {
   loaded: boolean;
   selectedUserId: number | null;
   error: any;
+  searchLogin: string;
 }
 
 export const selectUserId = (user: User): number => user.id;
@@ -24,6 +25,7 @@ export const usersAdapter: EntityAdapter<User> = createEntityAdapter<User>({
 export const initialState: UsersState = usersAdapter.getInitialState({
   loaded: false,
   selectedUserId: null,
+  searchLogin: '',
   error: null,
 });
 
@@ -35,6 +37,10 @@ export const usersReducer = createReducer(
   on(UserActions.selectUser, (state, { userId }) => ({
     ...state,
     selectedUserId: userId,
+  })),
+  on(UserActions.searchUsers, (state, { query }) => ({
+    ...state,
+    searchLogin:query,
   })),
   on(
     UserActions.loadUsersFailure,

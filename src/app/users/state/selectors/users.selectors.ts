@@ -1,8 +1,4 @@
-import {
-  createFeature,
-  createFeatureSelector,
-  createSelector,
-} from '@ngrx/store';
+import { createFeature, createSelector } from '@ngrx/store';
 import {
   usersAdapter,
   reducer,
@@ -30,3 +26,26 @@ export const usersFeature = createFeature({
     ),
   }),
 });
+
+export const selectInfoForSearch = createSelector(
+  usersFeature.selectTotal,
+  usersFeature.selectSearchLogin,
+  usersFeature.selectError,
+  (total, login, errorApi) =>
+    errorApi
+      ? { text: errorApi as string, color: 'red' }
+      : login === ''
+      ? {
+          text: `enter login to search`,
+          color: 'green',
+        }
+      : total === 0
+      ? {
+          text: `not found ${login}`,
+          color: 'red',
+        }
+      : {
+          text: `found ${total} users`,
+          color: 'green',
+        }
+);

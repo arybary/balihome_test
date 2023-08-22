@@ -1,12 +1,11 @@
-<mat-grid-list class="striped-list" cols="2" rowHeight="2:1" *ngrxLet="users$ as users">
-  <mat-grid-tile
-    class="card"
+<div class="users" *ngrxLet="users$ as users">
+  <div
+    class="user"
     *ngFor="let user of users"
     [routerLink]="[NavigationPath.RepoPage, user.login]"
   >
-    <mat-grid-tile-header class="card-title">{{ user.login }}</mat-grid-tile-header>
+    <img [src]="user.avatar_url" class="user-avatar" alt="user_avatar" />
 
-      <img class="avatar" [src]="user.avatar_url" alt="user_avatar"
-    />
-  </mat-grid-tile>
-</mat-grid-list>
+    <h3 class="user-login"><i class="bi bi-github"></i>{{ user.login }}</h3>
+  </div>
+</div>

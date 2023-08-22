@@ -1,10 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/core/store';
 import { selectRouteParams } from 'src/app/core/store/router.selectors';
-
 import { ReposFacade } from '../state/repos.facade';
 
 @Component({

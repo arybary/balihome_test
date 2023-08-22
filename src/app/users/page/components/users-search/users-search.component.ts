@@ -6,6 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TextInfoForSearch } from 'src/app/users/model/search.model';
 import { User } from 'src/app/users/model/user.model';
 import { UsersFacade } from 'src/app/users/state/users.facade';
 
@@ -16,15 +17,17 @@ import { UsersFacade } from 'src/app/users/state/users.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersSearchComponent {
-  @Input() userName: string = '';
-  @Output() userNameChange = new EventEmitter<string>();
+  userLogin: string = '';
+  textInfo$: Observable<TextInfoForSearch> =
+    this.usersFacada.textInfoForSearch$;
 
   constructor(private readonly usersFacada: UsersFacade) {}
 
-  onNameChange(model: string) {
-    this.userName = model;
-    this.userNameChange.emit(model);
-    if( this.userName !==''){this.usersFacada.serchUsers(this.userName)}
-    this.usersFacada.loadUsers()
+  onLoginChange(login: string) {
+    this.userLogin = login;
+    if (this.userLogin !== '') {
+      this.usersFacada.serchUsers(this.userLogin);
+    }
+    this.usersFacada.loadUsers();
   }
 }

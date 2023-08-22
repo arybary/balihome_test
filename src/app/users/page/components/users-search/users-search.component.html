@@ -1,1 +1,11 @@
-<input class="search" [ngModel]="userName" (ngModelChange)="onNameChange($event)" />
+<ng-container *ngIf="textInfo$ | ngrxPush as textInfo">
+  <p [ngStyle]="{ color: textInfo.color, border: textInfo.color }">
+    {{ textInfo.text }}
+  </p>
+  <input
+    class="search"
+    [ngStyle]="{ color: textInfo.color, border: textInfo.color }"
+    [ngModel]="userLogin"
+    (ngModelChange)="onLoginChange($event)"
+  />
+</ng-container>

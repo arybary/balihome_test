@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { TextInfoForSearch } from '../model/search.model';
 import { User } from '../model/user.model';
 import * as UsersActions from './actions/users.actions';
 import { UsersState } from './redusers/users.redusers';
-import { usersFeature } from './selectors/users.selectors';
+import { selectInfoForSearch, usersFeature } from './selectors/users.selectors';
 
 @Injectable()
 export class UsersFacade {
@@ -21,6 +22,13 @@ export class UsersFacade {
 
   public readonly loaded$: Observable<boolean> = this.store.pipe(
     select(usersFeature.selectLoaded)
+  );
+
+  public readonly textInfoForSearch$: Observable<TextInfoForSearch> =
+    this.store.pipe(select(selectInfoForSearch));
+
+  public readonly loginForSearch$: Observable<string> = this.store.pipe(
+    select(usersFeature.selectSearchLogin)
   );
 
   public readonly error$: Observable<any> = this.store.pipe(
