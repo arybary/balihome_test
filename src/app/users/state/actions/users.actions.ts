@@ -12,12 +12,17 @@ export const loadUsersFailure = createAction(
   props<{ error: any }>()
 );
 
-export const searchUsers = createAction(
-  '[Users/API] Search Users',
-  props<{ query: string }>()
+export const loadSearchUsers = createAction(
+  '[UsersSearch/API] Load SearchUsers',
+  props<{ query: string; page: number }>()
 );
 
-export const selectUser = createAction(
-  '[Users Page] Select User',
-  props<{ userId: number }>()
+export const loadUsersSearchSuccess = createAction(
+  '[UsersSearch/API] Load SearchUsers Success',
+  props<{ users: User[]; total: number }>()
+);
+
+export const loadUsersSearchFailure = createAction(
+  '[UsersSearch/API] Load SearchUsers Failure',
+  props<{ error: any }>()
 );

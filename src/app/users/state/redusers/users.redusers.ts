@@ -1,56 +1,65 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createFeature, createReducer, on } from '@ngrx/store';
 import * as UserActions from '../actions/users.actions';
 import { User } from '../../model/user.model';
 
 export const usersFeatureKey = 'users';
 
-export interface UsersState extends EntityState<User> {
+export interface UsersState {
+  users: User[];
   loaded: boolean;
   selectedUserId: number | null;
   error: any;
   searchLogin: string;
+  page: number;
+  total: number | null;
 }
 
-export const selectUserId = (user: User): number => user.id;
-
-export const sortByName = (a: User, b: User): number =>
-  a.login.localeCompare(b.login);
-
-export const usersAdapter: EntityAdapter<User> = createEntityAdapter<User>({
-  selectId: selectUserId,
-  sortComparer: sortByName,
-});
-
-export const initialState: UsersState = usersAdapter.getInitialState({
+export const initialState: UsersState = {
+  users: [],
   loaded: false,
   selectedUserId: null,
   searchLogin: '',
   error: null,
-});
-
-export const usersReducer = createReducer(
+  page: 1,
+  total: null,
+};
+export const usersReducers = createReducer(
   initialState,
-  on(UserActions.loadUsersSuccess, (state, { users }) =>
-    usersAdapter.setAll(users, { ...state, loaded: true })
-  ),
-  on(UserActions.selectUser, (state, { userId }) => ({
+  on(UserActions.loadUsers, (state) => ({
     ...state,
-    selectedUserId: userId,
+    users: [],
+    loaded: false,
+    error: null,
   })),
-  on(UserActions.searchUsers, (state, { query }) => ({
+  on(UserActions.loadUsersSuccess, (state, { users }) => ({
     ...state,
-    searchLogin:query,
+    users,
+    loaded: true,
+    error: null,
   })),
-  on(
-    UserActions.loadUsersFailure,
-    (state, { error }): UsersState => ({
-      ...state,
-      loaded: true,
-      error: error.message,
-    })
-  )
-);
+  on(UserActions.loadUsersFailure, (state, { error }) => ({
+    ...state,
+    loaded: true,
+    error: error.message,
+  })),
 
-export const reducer = (state: UsersState | undefined, action: Action) =>
-  usersReducer(state, action);
+  on(UserActions.loadSearchUsers, (state, { query, page }) => ({
+    ...state,
+    loaded: false,
+    users: [],
+    searchLogin: query,
+  })),
+  on(UserActions.loadUsersSearchSuccess, (state, { users, total }) => ({
+    ...state,
+    users,
+    total,
+    loaded: true,
+    error: null,
+  })),
+  on(UserActions.loadUsersFailure, (state, { error }) => ({
+    ...state,
+    loaded: true,
+    error: error.message,
+  }))
+);

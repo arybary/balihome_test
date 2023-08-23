@@ -1,4 +1,4 @@
-export interface TextInfoForSearch {
+export interface InfoForSearch {
   text: string;
   color: string;
 }

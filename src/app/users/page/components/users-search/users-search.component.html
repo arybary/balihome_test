@@ -6,6 +6,40 @@
     class="search"
     [ngStyle]="{ color: textInfo.color, border: textInfo.color }"
     [ngModel]="userLogin"
-    (ngModelChange)="onLoginChange($event)"
+    (ngModelChange)="onLoginChange(1,$event)"
   />
+  <nav aria-label="users" *ngIf="totalUsers$ | ngrxPush as totalUsers">
+    <ul *ngIf="selectedPage" class="pagination pagination-lg">
+      <li class="page-item"    (click)="onLoginChange(selectedPage-1,userLogin)">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+
+    <li class="page-item"   (click)="onLoginChange(1,userLogin)">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">1</span>
+      </a>
+    </li>
+    <li class="page-item"   (click)="onLoginChange(2,userLogin)">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">2</span>
+      </a>
+    </li>    <li class="page-item"   (click)="onLoginChange(2,userLogin)">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">...</span>
+      </a>
+    </li>    <li class="page-item"   (click)="onLoginChange(range(totalUsers),userLogin)">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">{{range(totalUsers)}}</span>
+      </a>
+    </li>
+      <li class="page-item"   (click)="onLoginChange(selectedPage+1,userLogin)">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
 </ng-container>

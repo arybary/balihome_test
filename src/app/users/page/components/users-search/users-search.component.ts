@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TextInfoForSearch } from 'src/app/users/model/search.model';
+import { InfoForSearch } from 'src/app/users/model/search.model';
 import { User } from 'src/app/users/model/user.model';
 import { UsersFacade } from 'src/app/users/state/users.facade';
 
@@ -17,17 +17,25 @@ import { UsersFacade } from 'src/app/users/state/users.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersSearchComponent {
+  selectedPage: number=1;
   userLogin: string = '';
-  textInfo$: Observable<TextInfoForSearch> =
+  totalUsers$:Observable<number | null>= this.usersFacada.usersTotal$
+  textInfo$: Observable<InfoForSearch> =
     this.usersFacada.textInfoForSearch$;
 
   constructor(private readonly usersFacada: UsersFacade) {}
 
-  onLoginChange(login: string) {
+  onLoginChange(page:number,login: string) {
+    this.selectedPage=page;
     this.userLogin = login;
+    console.log(this.userLogin,this.selectedPage)
     if (this.userLogin !== '') {
-      this.usersFacada.serchUsers(this.userLogin);
+      this.usersFacada.loadSerchUsers(this.userLogin,this.selectedPage);
     }
-    this.usersFacada.loadUsers();
+
   }
+
+  range(n: number): number {return Math.ceil(n/100)}
+
+
 }

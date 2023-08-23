@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
   GitHubUser,
   GitHubUserSearchResponse,
+  SearchUsers,
   User,
 } from '../../users/model/user.model';
 import { apiUrlGithub } from 'src/app/core/constants';
@@ -16,11 +17,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GithubUsersApiService {
   private apiUrl = apiUrlGithub;
+  perPage = 50;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<GitHubUser[]>(`${this.apiUrl}/users`).pipe(
+    const url = `${this.apiUrl}/users`;
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('page', 100);
+    queryParams = queryParams.append('per_page', this.perPage);
+    return this.http.get<GitHubUser[]>(url, { params: queryParams }).pipe(
       map((users) =>
         users.map(({ id, login, avatar_url }) => ({
           id,
@@ -35,17 +41,23 @@ export class GithubUsersApiService {
     );
   }
 
-  searchUsers(query: string): Observable<User[]> {
+  searchUsers(query: string, pageCurrent: number): Observable<SearchUsers> {
+    const url = `${this.apiUrl}/search/users`;
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append('q', query);
+    queryParams = queryParams.append('page', pageCurrent);
+    queryParams = queryParams.append('per_page', 100);
     return this.http
-      .get<GitHubUserSearchResponse>(`${this.apiUrl}/search/users?q=${query}`)
+      .get<GitHubUserSearchResponse>(url, { params: queryParams })
       .pipe(
-        map(({ items }) =>
-          items.map(({ id, login, avatar_url }) => ({
+        map(({ items, total_count }) => {
+          const users = items.map(({ id, login, avatar_url }) => ({
             id,
             login,
             avatar_url,
-          }))
-        ),
+          }));
+          return { total: total_count, users };
+        }),
         catchError((error) => {
           console.error('Error searching users', error);
           return throwError(error);

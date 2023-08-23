@@ -9,7 +9,7 @@ import * as UsersActions from '../actions/users.actions';
 export class UsersEffects {
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UsersActions.loadUsers, UsersActions.searchUsers),
+      ofType(UsersActions.loadUsers),
       mergeMap(() =>
         this.githubService.getUsers().pipe(
           map((users) => UsersActions.loadUsersSuccess({ users })),
@@ -21,11 +21,11 @@ export class UsersEffects {
 
   searchUsers$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(UsersActions.searchUsers),
-      mergeMap(({ query }) =>
-        this.githubService.searchUsers(query).pipe(
-          map((users) => UsersActions.loadUsersSuccess({ users })),
-          catchError((error) => of(UsersActions.loadUsersFailure({ error })))
+      ofType(UsersActions.loadSearchUsers),
+      mergeMap(({ query, page }) =>
+        this.githubService.searchUsers(query, page).pipe(
+          map((search) => UsersActions.loadUsersSearchSuccess(search)),
+          catchError((error) => of(UsersActions.loadUsersSearchFailure({ error })))
         )
       )
     )
