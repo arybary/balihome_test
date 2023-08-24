@@ -19,8 +19,12 @@
       aria-label="Close"
     ></button>
   </div>
-  <nav aria-label="users" *ngIf="pages$ | ngrxPush as pages">
-    <ul class="pagination">
+  <nav class="pagination" *ngIf="pages$ | ngrxPush as pages">
+    <span class="badge text-bg-secondary"
+      >{{ selectedPage * perPage - perPage + 1 }} -
+      {{ selectedPage * perPage }}</span
+    >
+    <ul >
       <button
         class="pagination-item"
         (click)="onLoginChange(selectedPage - 1, userLogin)"
@@ -45,9 +49,6 @@
       >
         <span aria-hidden="true">&raquo;</span>
       </button>
-      <span class="badge text-bg-secondary"
-        >{{ selectedPage * 50 - 49 }} - {{ selectedPage * 50 }}</span
-      >
     </ul>
   </nav>
 </ng-container>
