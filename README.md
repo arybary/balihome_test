@@ -3,7 +3,7 @@
 ### [Site link]
 
 
-<a href="[https://balihome-test.vercel.app/]" ># LINK FOR DEPLOUY</a>
+<a href="https://balihome-test.vercel.app/" ># LINK FOR DEPLOUY</a>
 
 ### The tech stack is:
 
