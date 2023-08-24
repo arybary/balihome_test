@@ -5,28 +5,36 @@ import { Repos } from '../../model/repos.model';
 
 export const reposFeatureKey = 'repos';
 
-export interface ReposState extends EntityState<Repos> {
+export interface ReposState {
   loaded: boolean;
-  selectedReposId: number | null;
+  repos: Repos[];
   error: any;
 }
 
-export const selectReposId = (user: Repos): number => user.id;
-
-export const reposAdapter: EntityAdapter<Repos> = createEntityAdapter<Repos>({
-  selectId: selectReposId,
-});
-
-export const initialState: ReposState = reposAdapter.getInitialState({
+export const initialState: ReposState = {
   loaded: false,
-  selectedReposId: null,
+  repos: [],
   error: null,
-});
+};
 
 export const reposReducer = createReducer(
   initialState,
-  on(ReposActions.loadReposSuccess, (state, { repos }) =>
-    reposAdapter.setAll(repos, { ...state, loaded: true })
+  on(
+    ReposActions.loadRepos,
+    (state): ReposState => ({
+      ...state,
+      loaded: false,
+      error: null,
+    })
+  ),
+  on(
+    ReposActions.loadReposSuccess,
+    (state, { repos }): ReposState => ({
+      ...state,
+      repos,
+      loaded: true,
+      error: null,
+    })
   ),
 
   on(
@@ -39,5 +47,3 @@ export const reposReducer = createReducer(
   )
 );
 
-export const reducer = (state: ReposState | undefined, action: Action) =>
-  reposReducer(state, action);

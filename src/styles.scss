@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Barriecito&family=Bricolage+Grotesque:opsz,wght@10..48,600&family=Monoton&display=swap");
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
 
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 *,
 *::before,
 *::after {
@@ -30,3 +34,5 @@ body {
   color: black;
   background-color: rgb(60, 137, 137);
 }
+
+

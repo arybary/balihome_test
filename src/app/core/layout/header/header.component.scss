@@ -1,10 +1,13 @@
 .header {
   display: flex;
+  position: fixed;
+  width: 100%;
   justify-content: space-between;
   text-align: center;
   align-items: center;
   height: 60px;
   background-color: darkslategray;
+
 }
 
 .logo {

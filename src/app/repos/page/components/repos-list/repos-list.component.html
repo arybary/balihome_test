@@ -1,5 +1,5 @@
-<div  class="repos-list"  *ngrxLet="repos$ as repos">
-  <div   *ngFor="let repo of repos">
+<div class="repos-list" *ngrxLet="repos$ as repos">
+  <div *ngFor="let repo of repos">
     <repos-modal [repo]="repo" />
   </div>
 </div>

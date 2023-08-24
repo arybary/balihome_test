@@ -9,7 +9,7 @@ import { reposFeature } from './selectors/repos.selectors';
 @Injectable()
 export class ReposFacade {
   public readonly repos$: Observable<Repos[]> = this.store.pipe(
-    select(reposFeature.selectAll)
+    select(reposFeature.selectRepos)
   );
 
   public readonly loaded$: Observable<boolean> = this.store.pipe(
@@ -22,9 +22,7 @@ export class ReposFacade {
 
   constructor(private readonly store: Store<ReposState>) {}
 
-  public loadRepos(login:string): void {
-    this.store.dispatch(ReposActions.loadRepos({login:login}));
+  public loadRepos(login: string): void {
+    this.store.dispatch(ReposActions.loadRepos({ login: login }));
   }
-
-
 }

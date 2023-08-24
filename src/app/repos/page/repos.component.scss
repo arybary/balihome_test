@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  font-family: Barriecito;
+  font-size: 42px;
+  border-radius: 20px;
+  border: 0.2rem solid darkslategray;
+  color: #000;
+  background-color: #fff;
+}
