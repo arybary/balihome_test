@@ -26,10 +26,8 @@ export class UsersEffects {
       mergeMap(({ query, page }) =>
         this.githubService.searchUsers(query, page).pipe(
           map((search) => UsersActions.loadUsersSearchSuccess(search)),
-          catchError((error) => {
-            console.log(error);
-            return of(UsersActions.loadUsersSearchFailure({ error }));
-          })
+          catchError((error) => of(UsersActions.loadUsersSearchFailure({ error }))
+          )
         )
       )
     )

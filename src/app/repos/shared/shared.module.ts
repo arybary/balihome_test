@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HasIssuesPipe } from './pipe/has-issues pipe';
-
-
+import { HasIssuesPipe } from './pipe/has-issues.pipe';
 
 const pipes = [HasIssuesPipe];
 

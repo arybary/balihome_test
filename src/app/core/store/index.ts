@@ -1,10 +1,9 @@
 import * as fromRouter from '@ngrx/router-store';
-import { getRouterSelectors } from '@ngrx/router-store';
 import {
   MetaReducer,
   ActionReducer,
   ActionReducerMap,
- } from '@ngrx/store';
+} from '@ngrx/store';
 import { RouterStateUrl } from './custom-route-serializer';
 
 export interface AppState {

@@ -1,6 +1,5 @@
 import {
-  createFeature,
-
+  createFeature
 } from '@ngrx/store';
 import { reposReducer, reposFeatureKey } from '../redusers/repos.redusers';
 

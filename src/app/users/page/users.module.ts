@@ -7,7 +7,6 @@ import { LetModule, PushPipe } from '@ngrx/component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersListComponent } from './components/users-list/users-list.component';
 
-
 @NgModule({
   declarations: [UsersComponent, UsersSearchComponent, UsersListComponent],
   imports: [

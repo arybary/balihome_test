@@ -8,7 +8,6 @@ export const usersFeatureKey = 'users';
 export interface UsersState {
   users: User[];
   loaded: boolean;
-  selectedUserId: number | null;
   error: any;
   searchLogin: string;
   page: number;
@@ -18,7 +17,6 @@ export interface UsersState {
 export const initialState: UsersState = {
   users: [],
   loaded: false,
-  selectedUserId: null,
   searchLogin: '',
   error: null,
   page: 1,

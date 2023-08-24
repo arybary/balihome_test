@@ -1,4 +1,4 @@
-import {  NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { appRedusers, metaReducers } from './store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -19,4 +19,4 @@ import { CustomSerializer } from './store/custom-route-serializer';
     EffectsModule.forRoot(),
   ],
 })
-export class CoreModule {}
+export class CoreModule { }

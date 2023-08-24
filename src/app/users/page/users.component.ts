@@ -9,10 +9,10 @@ import { UsersFacade } from '../state/users.facade';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersComponent implements OnInit {
-  loaded$: Observable<boolean> = this.usersFacada.loaded$;
+  loaded$: Observable<boolean> = this.usersFacade.loaded$;
 
-  constructor(private readonly usersFacada: UsersFacade) {}
+  constructor(private readonly usersFacade: UsersFacade) {}
   ngOnInit(): void {
-    this.usersFacada.loadUsers();
+    this.usersFacade.loadUsers();
   }
 }

@@ -21,6 +21,5 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     PushPipe,
     RouterModule.forChild([{ path: ':login', component: ReposComponent }]),
   ],
-
 })
 export class ReposModule {}

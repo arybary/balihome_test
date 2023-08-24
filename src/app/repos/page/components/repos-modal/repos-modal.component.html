@@ -16,13 +16,13 @@
       </button>
     </div>
     <div class="modal-body repo-info">
-      <div>Description: {{ repo.description }}</div>
+      <div *ngIf="repo.description">Description: {{ repo.description }}</div>
       <div>Language: {{ repo.language }}</div>
       <div>
         <p>Has Issues: {{ repo.has_issues | hasIssues }}</p>
       </div>
     </div>
-    <a href="{{ repo.html_url }}" target="_blank" class="user-login"
+    <a class="repo-link" href="{{ repo.html_url }}" target="_blank"
       ><i class="bi bi-github"></i> click to go to github</a
     >
   </ng-template>

@@ -16,9 +16,10 @@ import { Repos } from 'src/app/repos/model/repos.model';
 })
 export class ReposModalComponent {
   @Input() repo: Repos | undefined;
+  
   modalRef?: BsModalRef;
   config = {
-    animated: true
+    animated: true,
   };
   constructor(private modalService: BsModalService) {}
 

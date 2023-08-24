@@ -19,10 +19,6 @@ export class UsersFacade {
     select(usersFeature.selectPages)
   );
 
-  public readonly selectedId$: Observable<number | null> = this.store.pipe(
-    select(usersFeature.selectSelectedUserId)
-  );
-
   public readonly loaded$: Observable<boolean> = this.store.pipe(
     select(usersFeature.selectLoaded)
   );
@@ -44,9 +40,9 @@ export class UsersFacade {
     this.store.dispatch(UsersActions.loadUsers());
   }
 
-  public loadSerchUsers(search: string,pageCurrent:number): void {
-    this.store.dispatch(UsersActions.loadSearchUsers({ query: search,page:pageCurrent }));
+  public loadSerchUsers(search: string, pageCurrent: number): void {
+    this.store.dispatch(
+      UsersActions.loadSearchUsers({ query: search, page: pageCurrent })
+    );
   }
-
-
 }

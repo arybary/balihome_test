@@ -1,4 +1,4 @@
-import { HasIssuesPipe } from "./has-issues pipe";
+import { HasIssuesPipe } from "./has-issues.pipe";
 
 
 describe('HasIssuesPipe', () => {

@@ -11,5 +11,5 @@ import { NavigationPath } from '../../constants';
 export class HeaderComponent {
   NavigationPath = NavigationPath;
 
-  constructor(public route: ActivatedRoute) {}
+  constructor(public route: ActivatedRoute) { }
 }

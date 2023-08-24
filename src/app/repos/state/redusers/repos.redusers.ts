@@ -1,5 +1,4 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
-import { Action, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as ReposActions from '../actions/repos.actions';
 import { Repos } from '../../model/repos.model';
 
@@ -46,4 +45,3 @@ export const reposReducer = createReducer(
     })
   )
 );
-
