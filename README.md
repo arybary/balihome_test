@@ -5,9 +5,6 @@
 
 <a href="[https://balihome-test.vercel.app/]" ># LINK FOR DEPLOUY</a>
 
-
-[Задача, Макет](https://www.figma.com/file/hASNKZMt0gydcsdLJvnO8a/Rexit-Frontend-Test-Task?type=design&node-id=0%3A1&mode=design&t=wipbUpt3PaS8OIT3-1)
-
 ### The tech stack is:
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5)
@@ -17,6 +14,24 @@
 - [NgRX](https://ngrx.io/)
 - [RxJS](https://rxjs.dev/)
 - [[boostrap](https://getbootstrap.com/)]
+
+  ##Завдання
+Потрібно зробити веб інтерфейс для відображення користувачів та інформації про них з github
+- в додатку(Angular) повинно бути 2 роута (/ , /repos)
+- на стартовій сторінці буде:
+- поле для пошуку зверху(на всю ширину екрана)
+- та список знайденого під полем пошуку у 2 колонки(на всю ширину екрана)
+- при запуску потрібно завантажити всіх користувачів по https://api.github.com/users та відобразити у списку   avatar_url(показати іконку) | login
+- при введенні тексту в поле пошуку, потрібно робити запит на https://api.github.com/search/users?q={username} i відображати у тому ж списку(якщо апі видає помилку потрібно підсвітити поле пошуку червоним і показати текст про помилку над ним)
+- при натисненні на один елемент списку, потрібно відкрити роут /repos/{login}
+- в роуті /repos/{login} буде список всіх репозиторіїв вибраного користувача ссилка для запиту https://api.github.com/users/{login}/repos", без поля пошуку
+- в списку показати   name | description
+- при натисненні на один репозиторій - показати модальне вікно з бутстрапа, з детальнішою інфрмацією
+- TITLE (name)- зверху жирним шрифтом
+- description
+- language
+- has_issues - показати іконкою (галочка якшо є, хрестик якшо нема)
+- html_url - показати ссилкою яка буде відкривати проект в github
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
