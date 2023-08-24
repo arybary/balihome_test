@@ -5,4 +5,4 @@ export enum NavigationPath {
   RepoPage = 'repos',
 }
 
-export const currencUsersForPage = 50
+export const currentUsersForPage = 50

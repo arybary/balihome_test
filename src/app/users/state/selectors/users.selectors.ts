@@ -1,5 +1,5 @@
 import { createFeature, createSelector } from '@ngrx/store';
-import { currencUsersForPage } from 'src/app/core/constants';
+import { currentUsersForPage } from 'src/app/core/constants';
 import * as UsersFrom from '../redusers/users.redusers';
 
 export const usersFeature = createFeature({
@@ -7,7 +7,7 @@ export const usersFeature = createFeature({
   reducer: UsersFrom.usersReducers,
   extraSelectors: ({ selectSearchLogin, selectError, selectTotal }) => ({
     selectPages: createSelector(selectTotal, (total) =>
-      total ? Math.ceil(total / currencUsersForPage) : null
+      total ? Math.ceil(total / currentUsersForPage) : null
     ),
     selectInfoForSearch: createSelector(
       selectTotal,

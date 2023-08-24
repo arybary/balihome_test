@@ -8,7 +8,7 @@ import {
   SearchUsers,
   User,
 } from '../../users/model/user.model';
-import { apiUrlGithub, currencUsersForPage } from 'src/app/core/constants';
+import { apiUrlGithub, currentUsersForPage } from 'src/app/core/constants';
 import { Repos } from 'src/app/repos/model/repos.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GithubUsersApiService {
   private apiUrl = apiUrlGithub;
-  perPage = currencUsersForPage;
+  perPage = currentUsersForPage;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 

@@ -23,7 +23,6 @@ export class UsersEffects {
   searchUsers$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UsersActions.loadSearchUsers),
-
       mergeMap(({ query, page }) =>
         this.githubService.searchUsers(query, page).pipe(
           map((search) => UsersActions.loadUsersSearchSuccess(search)),
