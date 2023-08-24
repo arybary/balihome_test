@@ -1,5 +1,23 @@
 # GitUsers
 
+### [Site link]
+
+
+<a href="[https://balihome-test.vercel.app/]" ># LINK FOR DEPLOUY</a>
+
+
+[Задача, Макет](https://www.figma.com/file/hASNKZMt0gydcsdLJvnO8a/Rexit-Frontend-Test-Task?type=design&node-id=0%3A1&mode=design&t=wipbUpt3PaS8OIT3-1)
+
+### The tech stack is:
+
+- [HTML5](https://en.wikipedia.org/wiki/HTML5)
+- [CSS3](https://sass-lang.com/)
+- [TypeScript](https://ru.wikipedia.org/wiki/TypeScript)
+- [Angular](https://angular.io/)
+- [NgRX](https://ngrx.io/)
+- [RxJS](https://rxjs.dev/)
+- [[boostrap](https://getbootstrap.com/)]
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server
