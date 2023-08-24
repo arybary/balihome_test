@@ -24,12 +24,18 @@ export class UsersSearchComponent {
 
   constructor(private readonly usersFacada: UsersFacade) {}
 
+  clearSearchLogin() {
+    this.userLogin = '';
+    this.usersFacada.loadUsers();
+  }
+
   onLoginChange(page: number, login: string) {
-    this.selectedPage = page;
     this.userLogin = login;
     console.log(this.userLogin, this.selectedPage);
     if (this.userLogin !== '') {
+      this.selectedPage = page;
       this.usersFacada.loadSerchUsers(this.userLogin, this.selectedPage);
     }
+    this.usersFacada.loadUsers();
   }
 }

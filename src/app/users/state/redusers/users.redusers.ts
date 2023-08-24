@@ -29,7 +29,9 @@ export const usersReducers = createReducer(
   on(UserActions.loadUsers, (state) => ({
     ...state,
     users: [],
+    searchLogin: '',
     loaded: false,
+    total: null,
     error: null,
   })),
   on(UserActions.loadUsersSuccess, (state, { users }) => ({

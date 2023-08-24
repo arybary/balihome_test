@@ -1,53 +1,62 @@
-<ng-container *ngIf="textInfo$ | ngrxPush as textInfo">
-  <p class='info-panel' [ngClass]="textInfo.class">
-    {{ textInfo.text }}
+<ng-container *ngrxLet="{ textInfo: textInfo$, pages: pages$ } as s">
+  <p class="info-panel" [ngClass]="s.textInfo.class">
+    {{ s.textInfo.text }}
   </p>
-  <input
-    class="search"
-    [ngClass]="textInfo.class"
-    [ngModel]="userLogin"
-    (ngModelChange)="onLoginChange(1, $event)"
-  />
+  <div class="search-panel">
+    <i class="bi bi-search"></i>
+    <input
+      *ngIf="s.pages !== 0"
+      class="search"
+      [ngClass]="s.textInfo.class"
+      [ngModel]="userLogin"
+      (ngModelChange)="onLoginChange(1, $event)"
+      [disabled]="s.pages === 0"
+    />
+    <button
+      (click)="clearSearchLogin()"
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+    ></button>
+  </div>
   <nav aria-label="users" *ngIf="pages$ | ngrxPush as pages">
     <span class="badge text-bg-secondary"
       >{{ selectedPage * 50 - 49 }} - {{ selectedPage * 50 }}</span
     >
     <ul *ngIf="selectedPage" class="pagination pagination-lg">
-      <li
+      <button
         class="page-item"
         (click)="onLoginChange(selectedPage - 1, userLogin)"
-        disabled="selectedPage<pages"
-
+        [disabled]="selectedPage <= 1"
       >
-        <a class="page-link" href="#" aria-label="Previous">
+        <a class="page-buttonnk" href="#" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
-      </li>
+      </button>
 
-      <li class="page-item" (click)="onLoginChange(1, userLogin)">
+      <button class="page-item" (cbuttonck)="onLoginChange(1, userLogin)">
         <a class="page-link" href="#" aria-label="Next">
           <span aria-hidden="true">1</span>
         </a>
-      </li>
-      <li class="page-item" (click)="onLoginChange(2, userLogin)">
+      </button>
+      <button class="page-item" (click)="onLoginChange(2, userLogin)">
         <a class="page-link" href="#" aria-label="Next">
           <span aria-hidden="true">...</span>
         </a>
-      </li>
-      <li class="page-item" (click)="onLoginChange(pages, userLogin)">
+      </button>
+      <button class="page-item" (click)="onLoginChange(pages, userLogin)">
         <a class="page-link" href="#" aria-label="Next">
           <span aria-hidden="true">{{ pages }}</span>
         </a>
-      </li>
-      <li
+      </button>
+      <button
         class="page-item"
         (click)="onLoginChange(selectedPage + 1, userLogin)"
-        disabled="selectedPage>pages"
       >
         <a class="page-link" href="#" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
-      </li>
+      </button>
     </ul>
   </nav>
 </ng-container>
