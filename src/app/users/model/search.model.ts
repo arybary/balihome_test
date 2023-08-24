@@ -1,4 +1,4 @@
 export interface InfoForSearch {
   text: string;
-  color: string;
+  class?: string;
 }

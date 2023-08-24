@@ -57,9 +57,9 @@ export const usersReducers = createReducer(
     loaded: true,
     error: null,
   })),
-  on(UserActions.loadUsersFailure, (state, { error }) => ({
+  on(UserActions.loadUsersSearchFailure, (state, { error }) =>{ console.log(error);return({
     ...state,
     loaded: true,
     error: error.message,
-  }))
+  })})
 );

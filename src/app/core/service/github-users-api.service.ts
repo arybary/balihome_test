@@ -8,7 +8,7 @@ import {
   SearchUsers,
   User,
 } from '../../users/model/user.model';
-import { apiUrlGithub } from 'src/app/core/constants';
+import { apiUrlGithub, currencUsersForPage } from 'src/app/core/constants';
 import { Repos } from 'src/app/repos/model/repos.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GithubUsersApiService {
   private apiUrl = apiUrlGithub;
-  perPage = 50;
+  perPage = currencUsersForPage;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
@@ -46,7 +46,7 @@ export class GithubUsersApiService {
     let queryParams = new HttpParams();
     queryParams = queryParams.append('q', query);
     queryParams = queryParams.append('page', pageCurrent);
-    queryParams = queryParams.append('per_page', 100);
+    queryParams = queryParams.append('per_page', this.perPage);
     return this.http
       .get<GitHubUserSearchResponse>(url, { params: queryParams })
       .pipe(
