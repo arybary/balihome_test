@@ -4,8 +4,7 @@
   </button>
 
   <ng-template #template>
-    <div class="modal-header">
-      <h4 class="modal-title pull-left repo-title">{{ repo.name }}</h4>
+    <div class="modal-header repo-modal-header">
       <button
         type="button"
         class="close btn-close pull-right"
@@ -14,15 +13,16 @@
       >
         <span aria-hidden="true" class="visually-hidden">&times;</span>
       </button>
+      <h4 class="modal-title pull-left repo-modal-header-title">{{ repo.name }}</h4>
     </div>
-    <div class="modal-body repo-info">
+    <div class="modal-body  repo-modal-info">
       <div *ngIf="repo.description">Description: {{ repo.description }}</div>
       <div>Language: {{ repo.language }}</div>
       <div>
         <p>Has Issues: {{ repo.has_issues | hasIssues }}</p>
       </div>
     </div>
-    <a class="repo-link" href="{{ repo.html_url }}" target="_blank"
+    <a class="repo-modal-link" href="{{ repo.html_url }}" target="_blank"
       ><i class="bi bi-github"></i> click to go to github</a
     >
   </ng-template>
