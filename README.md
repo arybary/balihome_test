@@ -13,7 +13,7 @@
 - [Angular](https://angular.io/)
 - [NgRX](https://ngrx.io/)
 - [RxJS](https://rxjs.dev/)
-- [[boostrap](https://getbootstrap.com/)]
+- [boostrap](https://getbootstrap.com/)
 - [npx-boostrap](https://valor-software.com/ngx-bootstrap/#/)
 
   ##Завдання
